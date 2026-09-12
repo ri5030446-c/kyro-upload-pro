@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Kyro Upload Pro",
+  "version": "1.0.0",
+  "description": "TikTok 60FPS Uploader - RIFE AI Interpolation + FFmpeg + MP4 Patching",
+  "permissions": [
+    "storage",
+    "tabs",
+    "downloads"
+  ],
+  "host_permissions": [
+    "*://*.tiktok.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Kyro Upload Pro",
+    "default_icon": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.tiktok.com/tiktokstudio/upload*",
+        "*://www.tiktok.com/upload*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["inject.js"],
+      "matches": ["*://*.tiktok.com/*"]
+    }
+  ]
+}
